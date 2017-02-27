@@ -30,11 +30,12 @@ TARGET_NO_RADIOIMAGE := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/nvidia/shieldtablet
-TARGET_KERNEL_CONFIG := omni_shieldtablet_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_shieldtablet_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 BOARD_KERNEL_CMDLINE := androidboot.hardware=tn8 androidboot.selinux=permissive
 
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_CACHEIMAGE_PARTITION_SIZE := 1073741824
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
@@ -47,10 +48,6 @@ TARGET_POWERHAL_VARIANT := tegra
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
-
-# Per-application sizes for shader cache
-MAX_EGL_CACHE_SIZE := 4194304
-MAX_EGL_CACHE_ENTRY_SIZE := 262144
 
 # Recovery
 BOARD_SUPPRESS_SECURE_ERASE := true
@@ -75,3 +72,37 @@ TW_BRIGHTNESS_PATH := /sys/class/backlight/pwm-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_INCLUDE_CRYPTO := true
 TARGET_RECOVERY_DEVICE_MODULES := rm-wrapper
+BOARD_USES_DOUBLEFLIP_FB := true
+TW_DEVICE_VERSION := 1
+#TW_ENABLE_ROTATION := true
+#TW_DEFAULT_ROTATION := 180
+
+# MultiROM
+TARGET_RECOVERY_IS_MULTIROM := true
+MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/nvidia/shieldtablet/multirom/mr_init_devices.c
+MR_DPI := xhdpi
+MR_DPI_FONT := 323
+MR_FSTAB := device/nvidia/shieldtablet/multirom/twrp.fstab
+MR_KEXEC_MEM_MIN := 0x85000000
+MR_DEVICE_HOOKS := device/nvidia/shieldtablet/multirom/mr_hooks.c
+MR_DEVICE_HOOKS_VER := 5
+MR_DEVICE_VARIANTS := shieldtablet
+MR_NO_KEXEC := 2
+#MULTIROM_DEFAULT_ROTATION := 180
+
+# HW keys
+#MR_PAD_CONFIRM := true
+#MR_PAD_DOWN := true
+#MR_PAD_UP := true
+
+# Versioning
+include device/common/version-info/MR_REC_VERSION.mk
+
+ifeq ($(MR_REC_VERSION),)
+MR_REC_VERSION := $(shell date -u +%Y%m%d)-01
+endif
+
+BOARD_MKBOOTIMG_ARGS += --board mrom$(MR_REC_VERSION)
+
