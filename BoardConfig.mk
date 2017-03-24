@@ -73,7 +73,7 @@ TW_MAX_BRIGHTNESS := 255
 TW_INCLUDE_CRYPTO := true
 TARGET_RECOVERY_DEVICE_MODULES := rm-wrapper
 BOARD_USES_DOUBLEFLIP_FB := true
-TW_DEVICE_VERSION := 1
+TW_DEVICE_VERSION := 0
 #TW_ENABLE_ROTATION := true
 #TW_DEFAULT_ROTATION := 180
 
@@ -83,6 +83,7 @@ MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
 MR_INPUT_TYPE := type_b
 MR_INIT_DEVICES := device/nvidia/shieldtablet/multirom/mr_init_devices.c
 MR_DPI := xhdpi
+MR_PIXEL_FORMAT := "RGBA_8888"
 MR_DPI_FONT := 323
 MR_FSTAB := device/nvidia/shieldtablet/multirom/twrp.fstab
 MR_KEXEC_MEM_MIN := 0x85000000
@@ -98,7 +99,7 @@ MR_NO_KEXEC := 2
 #MR_PAD_UP := true
 
 # Versioning
-include device/common/version-info/MR_REC_VERSION.mk
+include device/nvidia/shieldtablet/multirom/version/MR_REC_VERSION.mk
 
 ifeq ($(MR_REC_VERSION),)
 MR_REC_VERSION := $(shell date -u +%Y%m%d)-01
