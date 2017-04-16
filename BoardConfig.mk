@@ -30,8 +30,8 @@ TARGET_NO_RADIOIMAGE := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/nvidia/shieldtablet
-TARGET_KERNEL_CONFIG := cyanogenmod_shieldtablet_defconfig
-BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+TARGET_KERNEL_CONFIG := lineageos_shieldtablet_defconfig
+BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_CMDLINE := androidboot.hardware=tn8 androidboot.selinux=permissive
 
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -73,13 +73,14 @@ TW_MAX_BRIGHTNESS := 255
 TW_INCLUDE_CRYPTO := true
 TARGET_RECOVERY_DEVICE_MODULES := rm-wrapper
 BOARD_USES_DOUBLEFLIP_FB := true
-TW_DEVICE_VERSION := 0
+TW_DEVICE_VERSION := 2
 #TW_ENABLE_ROTATION := true
 #TW_DEFAULT_ROTATION := 180
+TW_INPUT_BLACKLIST := "hbtp_vm"
 
 # MultiROM
 TARGET_RECOVERY_IS_MULTIROM := true
-MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
+MR_NO_KEXEC := enabled
 MR_INPUT_TYPE := type_b
 MR_INIT_DEVICES := device/nvidia/shieldtablet/multirom/mr_init_devices.c
 MR_DPI := xhdpi
@@ -90,8 +91,8 @@ MR_KEXEC_MEM_MIN := 0x85000000
 MR_DEVICE_HOOKS := device/nvidia/shieldtablet/multirom/mr_hooks.c
 MR_DEVICE_HOOKS_VER := 5
 MR_DEVICE_VARIANTS := shieldtablet
-MR_NO_KEXEC := 2
 #MULTIROM_DEFAULT_ROTATION := 180
+MR_INPUT_ROTATION := 180
 
 # HW keys
 #MR_PAD_CONFIRM := true
