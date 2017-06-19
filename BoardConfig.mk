@@ -16,7 +16,7 @@
 
 -include device/nvidia/shield-common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := shieldtablet,wx_na_do,wx_un_do,wx_un_mo,wx_na_wf
+TARGET_OTA_ASSERT_DEVICE := shieldtablet,wx_na_do,wx_un_do,wx_un_mo,wx_na_wf,sb_na_wf
 
 TARGET_SPECIFIC_HEADER_PATH := device/nvidia/shieldtablet/include
 
