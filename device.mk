@@ -24,6 +24,8 @@ TARGET_TEGRA_VERSION := t124
 TARGET_TEGRA_MODEM := icera
 TARGET_TEGRA_TOUCH := raydium
 
+$(call inherit-product, device/nvidia/shield-common/shield.mk)
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
@@ -94,8 +96,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf \
-    $(LOCAL_PATH)/camera/model_frontal.xml:system/etc/model_frontal.xml
+    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -126,7 +127,7 @@ $(call inherit-product-if-exists, vendor/nvidia/shield_common/nvcamera-blobs.mk)
 $(call inherit-product, device/nvidia/shield-common/shield.mk)
 
 # set default USB configuration
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    sys.usb.config=mtp,adb \
-    persist.sys.usb.config=mtp,adb \
-    ro.adb.secure=0
+#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+#    sys.usb.config=mtp,adb \
+#    persist.sys.usb.config=mtp,adb \
+#    ro.adb.secure=0
